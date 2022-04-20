@@ -29,5 +29,41 @@
   </tbody>
 </table>
 
+<div class="pagination">
+  <span class="step-links">
+      {% if contatos.has_previous %}
+          <a href="?p={{ contatos.previous_page_number }}">Anterior</a>
+      {% endif %}
+  
+      <span class="current">
+          {{ contatos.number }} de {{ contatos.paginator.num_pages }}
+      </span>
+  
+      {% if contatos.has_next %}
+          <a href="?p={{ contatos.next_page_number }}">Próxima</a>
+      {% endif %}
+  </span>
+</div>
+
+
+{% comment %} <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    
+    {% for pagina in contatos.paginator.page_range %}
+      {% if contatos.number == pagina %}
+        <li class="page-item active">
+          <a class="page-link" href="?={{pagina}}">{{pagina}}</a>
+        </li>
+      {% else %} 
+        <li class="page-item">
+          <a class="page-link" href="?={{pagina}}">{{pagina}}</a>
+        </li> 
+      {% endif %}
+    {% endfor %}
+    
+  </ul>
+</nav> {% endcomment %}
+
+
 
 {% endblock %}
