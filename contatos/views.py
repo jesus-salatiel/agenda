@@ -1,3 +1,4 @@
+from unittest.util import sorted_list_difference
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
@@ -6,7 +7,7 @@ from .models import Contato
 
 
 def index(request):
-    contatos  = Contato.objects.all()
+    contatos  = Contato.objects.order_by('nome').filter(mostrar=True)
     paginator = Paginator(contatos,10)
     
     page = request.GET.get('p')
