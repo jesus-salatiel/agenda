@@ -14,10 +14,30 @@
 
   {% include 'parciais/_nav.html' %}
 
+  {% if 'accounts' not in request.path %}
+
+  <br><br>
+  <div class="container">
+<form method="get" action="{% url 'busca' %}">
+  <div class="form-group row">
+    <div class="col-12">
+      <input class="form-control"
+             type="search" value="{{ request.GET.termo }}"
+             id="search-input"
+             placeholder="Digite sua pesquisa"
+             name="termo">
+        {% include 'parciais/_messages.html' %}
+    </div>
+  </div>
+</form>
+</div>
+{% endif %}
+
   <!-- Page Content -->
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
+        
        {% block conteudo %}{% endblock  %}
       </div>
     </div>
